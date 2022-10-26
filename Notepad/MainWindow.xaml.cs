@@ -97,7 +97,7 @@ namespace Notepad
       
 
 
-        
+        // Function to find a word or a sentence 
         private void Search_Click(object sender, RoutedEventArgs e)
         {
 
