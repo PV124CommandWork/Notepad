@@ -1,0 +1,57 @@
+﻿<Window x:Class="Notepad.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Notepad"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    
+    <DockPanel LastChildFill="True">
+        <DockPanel LastChildFill="False" DockPanel.Dock="Top">
+            <Menu DockPanel.Dock="Top">
+                <MenuItem Header="_File">
+                    <MenuItem Header="_New" />
+                    <MenuItem Header="_Open" />
+                    <MenuItem Header="_Save" />
+                    <Separator />
+                    <MenuItem Header="_Exit" />
+                </MenuItem>
+                <MenuItem Header="_Edit">
+                    <MenuItem Header="_Cancel" />
+                    <MenuItem Header="_Cut" />
+                    <MenuItem Header="_Copy" />
+                    <MenuItem Header="_Paste" />
+                    <MenuItem Header="_Delete" />
+                    <Separator />
+                    <MenuItem Header="_Find" />
+                    <MenuItem Header="_Select All" />
+                </MenuItem>
+                <MenuItem Header="_Style">
+                    <MenuItem Header="_Font"/>
+                </MenuItem>
+                <MenuItem Header="_PDF" Click="MenuItem_Click_1">
+                    <MenuItem Header="_Open PDF" Click="OpenPdf"/>
+                    <MenuItem x:Name="SavePDF" Header="_Save PDF"/>
+                </MenuItem>
+
+                <MenuItem Header="_Information">
+                    <MenuItem Header="_About the program"/>
+                </MenuItem>
+            </Menu>
+
+        </DockPanel>
+
+        <DockPanel LastChildFill="False" DockPanel.Dock="Bottom">
+            <StatusBar DockPanel.Dock="Bottom">
+                <StatusBarItem>
+                    <TextBlock Name="lblCursorPosition" />
+                </StatusBarItem>
+            </StatusBar>
+
+        </DockPanel>
+        <Grid>
+            <TextBox x:Name="txtEditor" TextChanged="txtEditor_TextChanged"  />
+        </Grid>
+    </DockPanel>
+</Window>
