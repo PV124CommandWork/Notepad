@@ -39,6 +39,8 @@ namespace Notepad
 
         private SaveFileDialog saveFileDialogTXT;
         private TextBox searchText = new TextBox();
+        public static PDFReader pdfReader;
+
 
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
@@ -68,7 +70,13 @@ namespace Notepad
 
         private void OpenPdf(object sender, RoutedEventArgs e)
         {
-
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "Text files (*.pdf)|*.pdf";
+            openFileDialog.ShowDialog();
+            fileName = openFileDialog.FileName;
+            pdfReader = new PDFReader();
+            pdfReader.Show();
+            pdfReader.wb.Navigate(fileName);
         }
 
         private void txtEditor_TextChanged(object sender, TextChangedEventArgs e)
