@@ -5,17 +5,35 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Notepad"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    
+        Title="Notepad" Height="450" Width="800">
+    <Window.CommandBindings>
+        <CommandBinding Command="Open" Executed="Open_Click"/>
+        <CommandBinding Command="New" Executed="New_Click"/>
+        <CommandBinding Command="Save" Executed="Save_Click"/>
+        <CommandBinding Command="SaveAs" Executed="SaveAs_Click"/>
+        <CommandBinding Command="Find" Executed="Find_Click"/>
+    </Window.CommandBindings>
+    <Window.InputBindings>
+        <KeyBinding Key="O" Modifiers="Ctrl" Command="Open"/>
+        <KeyBinding Key="N" Modifiers="Ctrl" Command="New"/>
+        <KeyBinding Key="S" Modifiers="Ctrl" Command="Save"/>
+        <KeyBinding Key="S" Modifiers="Shift" Command="SaveAs"/>
+        <KeyBinding Key="F" Modifiers="Ctrl" Command="Find"/>
+    </Window.InputBindings>
+
     <DockPanel LastChildFill="True">
         <DockPanel LastChildFill="False" DockPanel.Dock="Top">
             <Menu DockPanel.Dock="Top">
                 <MenuItem Header="_File">
-                    <MenuItem Header="_New" />
-                    <MenuItem Header="_Open" />
-                    <MenuItem Header="_Save" />
+                    <MenuItem Header="_New" Click="New_Click" InputGestureText="Ctrl + N"/>
+                    <MenuItem Header="_Open" Click="Open_Click" InputGestureText="Ctrl + O" />
+                    <MenuItem Header="_Save" Click="Save_Click" InputGestureText="Ctrl + S"/>
+                    <MenuItem Header="_Save As" Click="SaveAs_Click" InputGestureText="Shift + S"/>
                     <Separator />
-                    <MenuItem Header="_Exit" />
+                    <MenuItem Header="_Exit" Click="Exit_Click" InputGestureText="Ctrl + X"/>
+                    <Separator />
+                    <MenuItem Header="_Find" Click="Find_Click" InputGestureText="Ctrl + F"/>
+
                 </MenuItem>
                 <MenuItem Header="_Edit">
                     <MenuItem Header="_Cancel" />
@@ -32,7 +50,7 @@
                 </MenuItem>
                 <MenuItem Header="_PDF" Click="MenuItem_Click_1">
                     <MenuItem Header="_Open PDF" Click="OpenPdf"/>
-                    <MenuItem x:Name="SavePDF" Header="_Save PDF"/>
+                    <MenuItem x:Name="SavePDF" Header="_Save PDF" Click="SavePDF_Click"/>
                 </MenuItem>
 
                 <MenuItem Header="_Information">
@@ -51,7 +69,13 @@
 
         </DockPanel>
         <Grid>
-            <TextBox x:Name="txtEditor" TextChanged="txtEditor_TextChanged"  />
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="410*"/>
+                <ColumnDefinition Width="247*"/>
+                <ColumnDefinition Width="137*"/>
+            </Grid.ColumnDefinitions>
+            <TextBox x:Name="txtEditor" TextChanged="txtEditor_TextChanged" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" AcceptsReturn="True" Grid.ColumnSpan="3" Margin="0,0,-0.4,0"/>
+            <DockPanel HorizontalAlignment="Left" Height="22" LastChildFill="False" Margin="167.6,-15,-0.4,0" VerticalAlignment="Top" Width="216" Name="panel" Grid.Column="1" Grid.ColumnSpan="2"/>
         </Grid>
     </DockPanel>
 </Window>
