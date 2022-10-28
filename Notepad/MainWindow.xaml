@@ -36,17 +36,16 @@
 
                 </MenuItem>
                 <MenuItem Header="_Edit">
-                    <MenuItem Header="_Cancel" />
-                    <MenuItem Header="_Cut" />
-                    <MenuItem Header="_Copy" />
-                    <MenuItem Header="_Paste" />
-                    <MenuItem Header="_Delete" />
-                    <Separator />
-                    <MenuItem Header="_Find" />
-                    <MenuItem Header="_Select All" />
+                    <MenuItem Header="_Cancel" InputGestureText="Ctrl + Z" Click="Cancel" />
+                    <MenuItem Header="_Cut" InputGestureText="Ctrl + X" Click="Cut"/>
+                    <MenuItem Header="_Copy" InputGestureText="Ctrl + C" Click="Copy"/>
+                    <MenuItem Header="_Paste" InputGestureText="Ctrl + V" Click="Paste"/>
+                    <MenuItem Header="_Delete" InputGestureText="Del" PreviewDragOver="MenuItem_PreviewDragOver" />
+                    <MenuItem Header="_Select All" InputGestureText="Ctrl + A" Click="SelectAll" />
                 </MenuItem>
                 <MenuItem Header="_Style">
-                    <MenuItem Header="_Font"/>
+                    <MenuItem Header="_Font" Click="MenuItem_Click_3"/>
+                    <MenuItem Header="_Color" Click="Change_Color" />
                 </MenuItem>
                 <MenuItem Header="_PDF" Click="MenuItem_Click_1">
                     <MenuItem Header="_Open PDF" Click="OpenPdf"/>
