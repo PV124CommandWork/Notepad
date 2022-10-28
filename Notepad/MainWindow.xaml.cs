@@ -18,7 +18,8 @@ using PdfSharp.Pdf;
 using PdfSharp.Pdf.IO;
 using PdfSharp.Drawing;
 using Microsoft.Win32;
-
+using System.Drawing;
+using MediaColor = System.Windows.Media.Color;
 
 
 
@@ -282,6 +283,83 @@ namespace Notepad
         private void SaveAs_Click(object sender, RoutedEventArgs e)
         {
             SaveTxtFile();
+        }
+
+        private void MenuItem_Click_3(object sender, RoutedEventArgs e)
+        {
+            
+            txtEditor.FontFamily = ClassFont.openFont() as System.Windows.Media.FontFamily;
+        }
+
+        private void Change_Color(object sender, RoutedEventArgs e)
+        {
+            System.Windows.Forms.ColorDialog oc = new System.Windows.Forms.ColorDialog();
+            System.Windows.Forms.DialogResult result = oc.ShowDialog();
+            if (result == System.Windows.Forms.DialogResult.OK)
+            {
+                MediaColor color = MediaColor.FromArgb(oc.Color.A, oc.Color.R, oc.Color.G, oc.Color.B);
+                txtEditor.Foreground = new SolidColorBrush(color);
+            }
+        }
+
+        private void Cancel(object sender, RoutedEventArgs e)
+        {
+            //if (txtEditor.CanUndo == true)
+            //{
+            //    txtEditor.Undo();
+            //    txtEditor.Foreground = null;
+            //}
+        }
+
+        private void Cut(object sender, RoutedEventArgs e)
+        {
+            if (txtEditor.SelectionLength > 0)
+            {
+                txtEditor.Cut();
+            }
+
+        }
+
+        private void Copy(object sender, RoutedEventArgs e)
+        {
+            if (txtEditor.SelectionLength > 0)
+            {
+                txtEditor.Copy();
+            }
+        }
+
+        private void Paste(object sender, RoutedEventArgs e)
+        {
+            if (txtEditor.SelectionLength > 0)
+            {
+                txtEditor.Paste();
+            }
+        }
+
+        private void Delete(object sender, RoutedEventArgs e)
+        {
+            if (txtEditor.SelectionLength > 0)
+            {
+                txtEditor.Clear();
+            }
+        }
+
+        private void SelectAll(object sender, RoutedEventArgs e)
+        {
+            if (txtEditor.SelectionLength > 0)
+            {
+                txtEditor.SelectAll();
+            }
+        }
+
+        private void MenuItem_PreviewDragOver(object sender, DragEventArgs e)
+        {
+            var shouldCancelDrop = false;
+            if (shouldCancelDrop)
+            {
+                e.Effects = DragDropEffects.None;
+                return;
+            }
         }
     }
 
