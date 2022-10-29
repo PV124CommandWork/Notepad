@@ -32,8 +32,7 @@ namespace Notepad
     {
         public MainWindow()
         {
-            InitializeComponent();
-            //  System.Text.Encoding.ReferenceEquals()
+            InitializeComponent();            
         }
         private string fileName;
         private string fileNameTXT = "";
@@ -42,11 +41,6 @@ namespace Notepad
         private TextBox searchText = new TextBox();
         public static PDFReader pdfReader;
 
-
-        private void MenuItem_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
 
         private void MenuItem_Click_1(object sender, RoutedEventArgs e)
         {
@@ -82,9 +76,11 @@ namespace Notepad
 
         private void txtEditor_TextChanged(object sender, TextChangedEventArgs e)
         {
+            
+            
             int row = txtEditor.GetLineIndexFromCharacterIndex(txtEditor.CaretIndex);
             int col = txtEditor.CaretIndex - txtEditor.GetCharacterIndexFromLineIndex(row);
-            lblCursorPosition.Text = "Line:" + (row + 1) + ", Char " + (col + 1);
+            lblCursorPosition.Text = "Line:" + (row + 1) + ", Char " + (col);
            
         }
         private void Find_Click(object sender, RoutedEventArgs e)
@@ -203,10 +199,7 @@ namespace Notepad
 
 
 
-        private void AboutTheProgram_Click(object sender, RoutedEventArgs e)
-        {
-            MessageBox.Show("This is the best text editor you've ever seen!\nThis amazing app was created by the most fabulous programmers in the world, by TeamPatron!\nEditors:\n- Max\n- Palvo Galitskiy(Knyazev)\n- Viktoriia Kychan\n- Max\n- Andriy Ripa\n");
-        }
+        
 
         private void New_Click(object sender, RoutedEventArgs e)
         {
@@ -360,6 +353,11 @@ namespace Notepad
                 e.Effects = DragDropEffects.None;
                 return;
             }
+        }
+
+        private void MenuItem_Click_4(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("This is the best text editor you've ever seen!\nThis amazing app was created by the most fabulous programmers in the world, by TeamPatron!\nEditors:\n- Max\n- Palvo Galitskiy(Knyazev)\n- Viktoriia Kychan\n- Max\n- Andriy Ripa\n");
         }
     }
 

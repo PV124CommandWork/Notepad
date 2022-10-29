@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Notepad"
         mc:Ignorable="d"
-        Title="Notepad" Height="450" Width="800">
+        Title="Notepad" Height="450" Width="800" Icon="icons8-notepad-64.png" Background="#FFD0E9FF" Foreground="{x:Null}">
     <Window.CommandBindings>
         <CommandBinding Command="Open" Executed="Open_Click"/>
         <CommandBinding Command="New" Executed="New_Click"/>
@@ -23,7 +23,7 @@
 
     <DockPanel LastChildFill="True">
         <DockPanel LastChildFill="False" DockPanel.Dock="Top">
-            <Menu DockPanel.Dock="Top">
+            <Menu DockPanel.Dock="Top" Background="White">
                 <MenuItem Header="_File">
                     <MenuItem Header="_New" Click="New_Click" InputGestureText="Ctrl + N"/>
                     <MenuItem Header="_Open" Click="Open_Click" InputGestureText="Ctrl + O" />
@@ -53,7 +53,7 @@
                 </MenuItem>
 
                 <MenuItem Header="_Information">
-                    <MenuItem Header="_About the program"/>
+                    <MenuItem Header="_About the program" Click="MenuItem_Click_4"/>
                 </MenuItem>
             </Menu>
 
@@ -61,13 +61,13 @@
 
         <DockPanel LastChildFill="False" DockPanel.Dock="Bottom">
             <StatusBar DockPanel.Dock="Bottom">
-                <StatusBarItem>
-                    <TextBlock Name="lblCursorPosition" />
+                <StatusBarItem  Background="AliceBlue">
+                    <TextBlock Name="lblCursorPosition"  Background="AliceBlue" />
                 </StatusBarItem>
             </StatusBar>
 
         </DockPanel>
-        <Grid>
+        <Grid Margin="1,1,1,1">
             <TextBox x:Name="txtEditor" TextChanged="txtEditor_TextChanged" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" AcceptsReturn="True" Grid.ColumnSpan="3" Margin="0,0,-0.4,0"/>
             <DockPanel HorizontalAlignment="Left" Height="22" LastChildFill="False" Margin="167.6,-15,-0.4,0" VerticalAlignment="Top" Width="216" Name="panel" Grid.Column="1" Grid.ColumnSpan="2"/>
         </Grid>
