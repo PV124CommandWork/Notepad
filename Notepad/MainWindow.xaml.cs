@@ -20,8 +20,7 @@ using PdfSharp.Drawing;
 using Microsoft.Win32;
 using System.Drawing;
 using MediaColor = System.Windows.Media.Color;
-
-
+using PdfSharp.Drawing.Layout;
 
 namespace Notepad
 {
@@ -262,7 +261,8 @@ namespace Notepad
                 XGraphics gfx = XGraphics.FromPdfPage(page);
 
                 XFont font = new XFont("Arial", FontSize = 20);
-                gfx.DrawString(txtEditor.Text, font, XBrushes.Black, new XRect(0, 0, page.Width, page.Height), XStringFormats.TopLeft);
+                var formatter = new XTextFormatter(gfx);
+                formatter.DrawString(txtEditor.Text, font, XBrushes.Black, new XRect(0, 0, page.Width, page.Height), XStringFormats.TopLeft);
 
                 doc.Save(saveFileDialogPDF.FileName);
             }
